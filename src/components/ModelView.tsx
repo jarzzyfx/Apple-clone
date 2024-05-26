@@ -13,7 +13,7 @@ interface ModelViewProps {
   setRotationState: any;
   item: {
     title: string;
-    color: string[];
+    color: [string];
     img: string;
   };
   size: string;

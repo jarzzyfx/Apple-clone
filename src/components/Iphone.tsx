@@ -11,10 +11,13 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 interface ModelProps {
+  scale: [number, number, number];
   item: {
+    title: string;
     img: string;
     color: [string];
   };
+  size: string;
 }
 
 interface GLTFResult {

@@ -1,14 +1,12 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ModelView } from "./ModelView";
 import { useEffect, useRef, useState } from "react";
-import { yellowImg } from "../utils";
-
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
+import { ModelView } from "./ModelView";
+import { yellowImg } from "../utils";
 import { models, sizes } from "../constants";
-
 import { animateWithGsapTimeline } from "../utils/animations";
 
 export const Model = () => {
@@ -19,11 +17,11 @@ export const Model = () => {
     img: yellowImg,
   });
 
-  //  camera control for the model view
-  const cameraControlSmall = useRef();
-  const cameraControlLarge = useRef();
+  // Camera control for the model view
+  const cameraControlSmall = useRef(null);
+  const cameraControlLarge = useRef(null);
 
-  // model
+  // Model
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
 
@@ -31,8 +29,11 @@ export const Model = () => {
   const [largeRotation, setLargeRotation] = useState(0);
 
   const tl = gsap.timeline();
+  const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    rootRef.current = document.getElementById("root");
+
     if (size === "large") {
       animateWithGsapTimeline(tl, small, smallRotation, "#view1", "#view2", {
         transform: "translateX(-100%)",
@@ -90,7 +91,7 @@ export const Model = () => {
                 right: 0,
                 overflow: "hidden",
               }}
-              eventSource={document.getElementById("root")}
+              eventSource={rootRef.current || undefined}
             >
               <View.Port />
             </Canvas>
