@@ -15,7 +15,7 @@ interface ModelProps {
   item: {
     title: string;
     img: string;
-    color: [string];
+    color: [string]; // change the type here
   };
   size: string;
 }
