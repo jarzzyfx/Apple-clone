@@ -14,9 +14,9 @@ interface ModelProps {
   scale: [number, number, number];
   item: {
     title: string;
+    color: [string]; // change the type here
     img: string;
   };
-    color: [string]; // change the type here
   size: string;
 }
 
