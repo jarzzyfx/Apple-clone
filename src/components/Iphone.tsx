@@ -18,8 +18,7 @@ interface ModelProps {
   setRotationState: React.Dispatch<React.SetStateAction<number>>;
   item: {
     title: string;
-    color: string[];
-    color: [string]; // change the type here
+    color: string[]; // change the type here
     img: string;
   };
   size: string;
