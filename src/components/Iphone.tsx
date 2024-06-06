@@ -11,13 +11,19 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 interface ModelProps {
-  scale: [number, number, number];
+  index: number;
+  groupRef: React.MutableRefObject<THREE.Group | null>;
+  gsapType: string;
+  controlRef: React.MutableRefObject<THREE.PerspectiveCamera | null>;
+  setRotationState: React.Dispatch<React.SetStateAction<number>>;
   item: {
     title: string;
+    color: string[];
     img: string;
-    color: [string];
   };
   size: string;
+
+  scale: [number, number, number];
 }
 
 interface GLTFResult {

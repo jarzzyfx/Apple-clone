@@ -1,5 +1,5 @@
 import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei";
-import { FC, Suspense } from "react";
+import { FC, SetStateAction, Suspense } from "react";
 import Lights from "./Lights";
 import Iphone from "./Iphone";
 import * as THREE from "three";
@@ -13,7 +13,7 @@ interface ModelViewProps {
   setRotationState: any;
   item: {
     title: string;
-    color: [string];
+    color: string[];
     img: string;
   };
   size: string;
@@ -59,6 +59,13 @@ export const ModelView: FC<ModelViewProps> = ({
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
             item={item}
             size={size}
+            index={0}
+            groupRef={groupRef}
+            gsapType={""}
+            controlRef={controlRef}
+            setRotationState={function (value: SetStateAction<number>): void {
+              throw new Error(`Function not implemented., ${value}`);
+            }}
           />
         </Suspense>
       </group>
